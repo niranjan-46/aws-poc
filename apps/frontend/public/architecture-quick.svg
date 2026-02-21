@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Scheduler Quick Architecture</title>
+  <desc id="desc">Compact architecture showing Frontend App Runner, Backend App Runner, EventBridge Scheduler, Lambda Executor, and S3 Audit bucket in Singapore region.</desc>
+
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .card { fill: #ffffff; stroke: #d9e1ee; stroke-width: 2; rx: 14; }
+      .aws { fill: #0f172a; font: 700 20px "Segoe UI", Arial, sans-serif; }
+      .sub { fill: #334155; font: 500 14px "Segoe UI", Arial, sans-serif; }
+      .label { fill: #0f172a; font: 700 16px "Segoe UI", Arial, sans-serif; }
+      .small { fill: #475569; font: 500 13px "Segoe UI", Arial, sans-serif; }
+      .arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrowHead); }
+      .dashed { stroke-dasharray: 8 6; }
+      .badge { fill: #e2e8f0; rx: 8; }
+      .badgeText { fill: #1e293b; font: 700 12px "Segoe UI", Arial, sans-serif; }
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="560"/>
+
+  <text class="aws" x="44" y="54">LLM Batch Scheduler - Quick Architecture</text>
+  <text class="sub" x="44" y="80">Region: ap-southeast-1 (Singapore) | Stage: prod</text>
+
+  <rect class="card" x="50" y="130" width="250" height="120"/>
+  <text class="label" x="74" y="170">Frontend</text>
+  <text class="small" x="74" y="194">App Runner</text>
+  <text class="small" x="74" y="216">llm-frontend-prod</text>
+  <rect class="badge" x="74" y="226" width="112" height="24"/>
+  <text class="badgeText" x="84" y="243">Public URL</text>
+
+  <rect class="card" x="390" y="130" width="280" height="120"/>
+  <text class="label" x="414" y="170">Backend API</text>
+  <text class="small" x="414" y="194">App Runner</text>
+  <text class="small" x="414" y="216">llm-backend-prod</text>
+  <rect class="badge" x="414" y="226" width="184" height="24"/>
+  <text class="badgeText" x="424" y="243">/api/batch/* endpoints</text>
+
+  <rect class="card" x="760" y="130" width="280" height="120"/>
+  <text class="label" x="784" y="170">EventBridge Scheduler</text>
+  <text class="small" x="784" y="194">Group: llm-prod-schedules</text>
+  <text class="small" x="784" y="216">Dynamic schedules per batch</text>
+  <rect class="badge" x="784" y="226" width="206" height="24"/>
+  <text class="badgeText" x="794" y="243">actionAfterCompletion=DELETE</text>
+
+  <rect class="card" x="1120" y="130" width="230" height="120"/>
+  <text class="label" x="1144" y="170">Lambda Executor</text>
+  <text class="small" x="1144" y="194">llm-prod-batch-executor</text>
+  <text class="small" x="1144" y="216">batch_executor.py</text>
+
+  <rect class="card" x="870" y="340" width="360" height="130"/>
+  <text class="label" x="894" y="380">S3 Audit</text>
+  <text class="small" x="894" y="404">Bucket: llm-prod-audit-180294187402-ap-southeast-1</text>
+  <text class="small" x="894" y="426">schedules/&lt;batchId&gt;/...</text>
+  <text class="small" x="894" y="448">executions/&lt;batchId&gt;/...</text>
+
+  <line class="arrow" x1="300" y1="190" x2="390" y2="190"/>
+  <text class="small" x="315" y="178">HTTPS /api</text>
+
+  <line class="arrow" x1="670" y1="190" x2="760" y2="190"/>
+  <text class="small" x="690" y="178">Create schedule</text>
+
+  <line class="arrow" x1="1040" y1="190" x2="1120" y2="190"/>
+  <text class="small" x="1052" y="178">Invoke</text>
+
+  <path class="arrow dashed" d="M1235 250 C1235 300, 1130 300, 1020 300 C900 300, 820 290, 740 250"/>
+  <text class="small" x="915" y="286">POST /api/batch/run + X-Scheduler-Secret</text>
+
+  <path class="arrow" d="M1190 250 C1200 290, 1180 320, 1120 340"/>
+  <text class="small" x="1185" y="313">Write audit</text>
+
+  <path class="arrow" d="M870 390 C760 390, 680 340, 620 250"/>
+  <text class="small" x="704" y="360">Schedule + run history</text>
+
+  <rect class="badge" x="50" y="500" width="264" height="30"/>
+  <text class="badgeText" x="62" y="520">Container Source: ECR (frontend/backend)</text>
+</svg>

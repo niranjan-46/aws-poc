@@ -1,0 +1,54 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#ECFEFF"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 36px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .box-title { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #111827; }
+      .box-text { font: 500 14px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10V0Z" fill="#0F766E"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <text x="70" y="86" class="title">Deployment View</text>
+  <text x="70" y="118" class="subtitle">How frontend, backend, scheduler, lambda, and S3 connect</text>
+
+  <rect x="70" y="160" width="1140" height="540" rx="24" fill="#FFFFFF" stroke="#CBD5E1"/>
+
+  <rect x="120" y="238" width="230" height="110" rx="16" fill="#F0F9FF" stroke="#0284C7"/>
+  <text x="146" y="278" class="box-title">Frontend</text>
+  <text x="146" y="304" class="box-text">Next.js Admin Console</text>
+
+  <rect x="430" y="238" width="260" height="110" rx="16" fill="#EEF2FF" stroke="#4F46E5"/>
+  <text x="456" y="278" class="box-title">Backend API</text>
+  <text x="456" y="304" class="box-text">Spring Boot Batch Service</text>
+
+  <rect x="770" y="190" width="260" height="110" rx="16" fill="#ECFEFF" stroke="#0EA5A4"/>
+  <text x="796" y="230" class="box-title">EventBridge</text>
+  <text x="796" y="256" class="box-text">Schedule Triggers</text>
+
+  <rect x="770" y="360" width="260" height="110" rx="16" fill="#F0FDFA" stroke="#14B8A6"/>
+  <text x="796" y="400" class="box-title">Lambda</text>
+  <text x="796" y="426" class="box-text">Batch Execution Runner</text>
+
+  <rect x="1090" y="274" width="90" height="110" rx="16" fill="#F0FDF4" stroke="#16A34A"/>
+  <text x="1106" y="320" class="box-title">S3</text>
+  <text x="1102" y="346" class="box-text">Audit</text>
+
+  <path d="M350 292H430" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M690 292L770 245" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M900 300V360" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1030 300H1090" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1030 416H1090" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="500" width="1060" height="150" rx="16" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="146" y="542" class="box-title">Traceability Path</text>
+  <text x="146" y="570" class="box-text">Batch ID is generated in UI -> sent to backend -> carried in EventBridge payload -> executed by Lambda -> written to S3 audit.</text>
+  <text x="146" y="596" class="box-text">Admin dashboard reads schedule/run summaries and supports filtering by batch ID and status.</text>
+</svg>

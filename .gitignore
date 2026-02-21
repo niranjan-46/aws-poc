@@ -1,0 +1,21 @@
+# Node / frontend build
+node_modules
+apps/frontend/node_modules/
+apps/frontend/.next/
+apps/frontend/out/
+
+# Java build output
+apps/backend/target/
+
+# Python cache
+services/lambda/__pycache__/
+*.pyc
+
+# Terraform local state and providers
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/terraform.tfvars
+
+# Keep lock file tracked
+!infra/terraform/.terraform.lock.hcl

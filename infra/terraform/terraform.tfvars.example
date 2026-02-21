@@ -1,0 +1,19 @@
+aws_region             = "ap-southeast-1"
+project_name           = "llm"
+stage                  = "prod"
+backend_api_host       = "smeiv3p6jn.ap-southeast-1.awsapprunner.com"
+scheduler_secret       = "replace-with-strong-secret"
+apprunner_frontend_name = "llm-frontend"
+apprunner_backend_name  = "llm-backend"
+
+# Optional overrides (stage-aware defaults are auto-generated if omitted):
+# audit_bucket_name            = "llm-prod-audit-123456789012-ap-southeast-1"
+# lambda_function_name         = "llm-prod-batch-executor"
+# lambda_zip_path              = "../../services/lambda/batch_executor.zip"
+# lambda_source_path           = "../../services/lambda/batch_executor.py"
+# scheduler_group_name         = "llm-prod-schedules"
+# ecr_frontend_repository_name = "llm-frontend-prod"
+# ecr_backend_repository_name  = "llm-backend-prod"
+
+# Optional alarm notifications:
+# alarm_sns_topic_arn = "arn:aws:sns:ap-southeast-1:123456789012:llm-prod-alerts"

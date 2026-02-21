@@ -1,0 +1,67 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#ECFDF5"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10V0Z" fill="#0F766E"/>
+    </marker>
+    <style>
+      .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .node-text { font: 500 14px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .badge { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #115E59; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="720" fill="url(#bg)"/>
+
+  <text x="72" y="84" class="title">AWS Batch Scheduler - System Flow</text>
+  <text x="72" y="118" class="subtitle">Unique batch ID scheduling, automated execution, and S3 audit trail</text>
+
+  <rect x="72" y="178" width="230" height="130" rx="20" fill="url(#card)" stroke="#0EA5A4" stroke-width="2"/>
+  <text x="96" y="224" class="node-title">Admin UI</text>
+  <text x="96" y="250" class="node-text">Next.js Console</text>
+  <text x="96" y="274" class="node-text">Creates unique Batch ID</text>
+
+  <rect x="378" y="178" width="250" height="130" rx="20" fill="url(#card)" stroke="#0284C7" stroke-width="2"/>
+  <text x="402" y="224" class="node-title">Backend API</text>
+  <text x="402" y="250" class="node-text">Spring Boot Scheduler</text>
+  <text x="402" y="274" class="node-text">Validates + Stores Audit</text>
+
+  <rect x="704" y="112" width="260" height="130" rx="20" fill="url(#card)" stroke="#2563EB" stroke-width="2"/>
+  <text x="728" y="158" class="node-title">EventBridge Scheduler</text>
+  <text x="728" y="184" class="node-text">Creates schedule event</text>
+  <text x="728" y="208" class="node-text">Payload: batchId, scheduleName</text>
+
+  <rect x="704" y="302" width="260" height="130" rx="20" fill="url(#card)" stroke="#0891B2" stroke-width="2"/>
+  <text x="728" y="348" class="node-title">AWS Lambda</text>
+  <text x="728" y="374" class="node-text">Auto-trigger on schedule</text>
+  <text x="728" y="398" class="node-text">Calls /api/batch/run</text>
+
+  <rect x="1038" y="206" width="170" height="130" rx="20" fill="url(#card)" stroke="#16A34A" stroke-width="2"/>
+  <text x="1070" y="252" class="node-title">Amazon S3</text>
+  <text x="1062" y="278" class="node-text">Schedule + Run</text>
+  <text x="1078" y="302" class="node-text">Audit JSON</text>
+
+  <path d="M302 242H378" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M628 238L704 178" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M834 242V302" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M964 272H1038" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M964 366H1038" stroke="#0F766E" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="72" y="492" width="1136" height="150" rx="20" fill="#FFFFFFB3" stroke="#CBD5E1"/>
+  <text x="100" y="538" class="node-title">Operational Guarantees</text>
+  <text x="100" y="568" class="node-text">1) Every schedule request generates a unique batch ID</text>
+  <text x="100" y="592" class="node-text">2) Backend enforces uniqueness and creates EventBridge schedule</text>
+  <text x="100" y="616" class="node-text">3) Execution status (PASSED/FAILED), timestamps, and duration are stored for admins</text>
+
+  <rect x="1028" y="520" width="156" height="40" rx="20" fill="#CCFBF1" stroke="#0D9488"/>
+  <text x="1062" y="546" class="badge">PRODUCTION FLOW</text>
+</svg>
